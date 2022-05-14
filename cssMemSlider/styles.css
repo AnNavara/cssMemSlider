@@ -1,0 +1,50 @@
+input[name="radio-control"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slider {
+    display: grid;
+    margin: 0 auto;
+    width: max(60vw, 800px);
+    overflow: hidden;
+}
+
+.slider__container {
+    display: flex;
+    width: 400%;
+}
+
+.slide {
+    width: 25%;
+    background-color: lightcoral;
+}
+
+.descr {
+    width: 25%;
+    background-color: lightblue;
+}
+
+.controls label {
+    cursor: pointer;
+}
+
+#radio-1:checked ~ .slider__container .slide-1,
+#radio-1:checked ~ .slider__container .descr-1 {
+    margin-left: 0;
+}
+
+#radio-2:checked ~ .slider__container .slide-2,
+#radio-2:checked ~ .slider__container .descr-2 {
+    margin-left: -25%;
+}
+
+#radio-3:checked ~ .slider__container .slide-3,
+#radio-3:checked ~ .slider__container .descr-3 {
+    margin-left: -50%;
+}
+
+#radio-4:checked ~ .slider__container .slide-4,
+#radio-4:checked ~ .slider__container .descr-4 {
+    margin-left: -75%;
+}
