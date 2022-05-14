@@ -82,7 +82,7 @@ input[name="radio-control"] {
 
 .descr {
     width: 25%;
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 1.2rem + 0.4vw, 2rem);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -105,16 +105,21 @@ input[name="radio-control"] {
 .controls label::after {
     content: "";
     display: block;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: clamp(1.6rem, 1.6rem + 1vw, 3.2rem);
+    height: clamp(1.6rem, 1.6rem + 1vw, 3.2rem);
     background-color: var(--color-accent);
     border: 2px solid var(--color-accent);
     border-radius: 50%;
+    transition: all 0.1s ease-in-out;
 }
 
 .controls label:hover::after {
     background-color: #ffffff;
     border-color: #ffffff;
+}
+
+.controls label:active::after {
+    transform: scale(0.85);
 }
 
 #radio-1:checked ~ .slider__container .slide-1,
@@ -155,8 +160,6 @@ input[name="radio-control"] {
         align-items: flex-end;     
     }
     .controls label::after {
-        width: 2.4rem;
-        height: 2.4rem;
         border-width: 3px;
     }
 }
