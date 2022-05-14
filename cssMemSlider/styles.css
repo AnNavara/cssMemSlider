@@ -50,15 +50,16 @@ input[name="radio-control"] {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr minmax(min-content, 2rem);
     margin: 0 auto;
-    width: max(min(70vw, 800px), 320px);
+    width: max(min(65vw, 720px), 320px);
     overflow: hidden;
-    row-gap: 5rem;
+    row-gap: 2rem;
 }
 
 .slider__container {
     display: flex;
     grid-column: 1/5;
     width: 400%;
+    align-items: center;
 }
 
 .descr__container {
@@ -76,25 +77,23 @@ input[name="radio-control"] {
 .slide img {
     width: 100%;
     object-fit: contain;
+    border-radius: 15px;
 }
 
 .descr {
-    padding-inline: 1rem 20rem;
-    padding-bottom: 1rem;
     width: 25%;
     font-size: 1.6rem;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: flex-start;
     opacity: 0;
     transition: all 0.15s ease-in-out;
 }
 
 .controls {
-    position: absolute;
-    inset: auto 0 0 auto;
+    grid-column: 1/5;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .controls label {
@@ -106,10 +105,10 @@ input[name="radio-control"] {
 .controls label::after {
     content: "";
     display: block;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.6rem;
+    height: 1.6rem;
     background-color: var(--color-accent);
-    border: 3px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
     border-radius: 50%;
 }
 
@@ -140,3 +139,24 @@ input[name="radio-control"] {
 #radio-4:checked ~ .slider__container .descr-1 { margin-left: -75%; }
 #radio-4:checked ~ .slider__container .descr-4 { opacity: 1; }
 #radio-4:checked ~ .controls label[for="radio-4"]::after { background: transparent; }
+
+@media only screen and (min-width: 768px) {
+    .slider {
+        row-gap: 3rem;
+        grid-template-rows: 1fr minmax(min-content, 5rem);
+    }
+    .controls {
+        position: absolute;
+        justify-content: flex-end;
+        inset: auto 0 0 auto;
+    }
+    .descr {
+        padding-inline: 1rem 20rem;
+        align-items: flex-end;     
+    }
+    .controls label::after {
+        width: 2.4rem;
+        height: 2.4rem;
+        border-width: 3px;
+    }
+}
