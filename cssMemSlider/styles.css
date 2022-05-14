@@ -1,3 +1,29 @@
+@import url(./normalize.css);
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+:root {
+    --color-accent: #71abfe;
+}
+
+body {
+    background-color: rgb(33, 32, 41);
+}
+
 input[name="radio-control"] {
     position: absolute;
     visibility: hidden;
@@ -8,6 +34,7 @@ input[name="radio-control"] {
     margin: 0 auto;
     width: max(60vw, 800px);
     overflow: hidden;
+    row-gap: 2rem;
 }
 
 .slider__container {
@@ -25,26 +52,44 @@ input[name="radio-control"] {
     background-color: lightblue;
 }
 
+.controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .controls label {
+    font-size: 0;
+    padding: 1.2rem;
     cursor: pointer;
 }
 
+.controls label::after {
+    content: "";
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-accent);
+    border-radius: 50%;
+}
+
+.controls label:hover::after {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
 #radio-1:checked ~ .slider__container .slide-1,
-#radio-1:checked ~ .slider__container .descr-1 {
-    margin-left: 0;
-}
+#radio-1:checked ~ .slider__container .descr-1 { margin-left: 0; }
+#radio-1:checked ~ .controls label[for="radio-1"]::after { background: transparent; }
 
-#radio-2:checked ~ .slider__container .slide-2,
-#radio-2:checked ~ .slider__container .descr-2 {
-    margin-left: -25%;
-}
+#radio-2:checked ~ .slider__container .slide-1,
+#radio-2:checked ~ .slider__container .descr-1 { margin-left: -25%; }
+#radio-2:checked ~ .controls label[for="radio-2"]::after { background: transparent; }
 
-#radio-3:checked ~ .slider__container .slide-3,
-#radio-3:checked ~ .slider__container .descr-3 {
-    margin-left: -50%;
-}
+#radio-3:checked ~ .slider__container .slide-1,
+#radio-3:checked ~ .slider__container .descr-1 { margin-left: -50%; }
+#radio-3:checked ~ .controls label[for="radio-3"]::after { background: transparent; }
 
-#radio-4:checked ~ .slider__container .slide-4,
-#radio-4:checked ~ .slider__container .descr-4 {
-    margin-left: -75%;
-}
+#radio-4:checked ~ .slider__container .slide-1,
+#radio-4:checked ~ .slider__container .descr-1 { margin-left: -75%; }
+#radio-4:checked ~ .controls label[for="radio-4"]::after { background: transparent; }
