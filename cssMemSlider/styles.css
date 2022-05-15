@@ -1,0 +1,179 @@
+@import url(./normalize.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+:root {
+    --font-family-base: 'Poppins', Arial, Helvetica, sans-serif;
+    --color-accent: #71abfe;
+    --color-accent-light: rgb(200, 194, 245);
+    --color-dark: rgb(27, 28, 36);
+    --gradient: linear-gradient(135deg, rgba(40,48,59,1) 0%, rgba(18,18,27,1) 43%, rgba(4,4,11,1) 100%);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: var(--font-family-base);
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--color-dark);
+    background: var(--gradient);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:visited {
+    color: var(--color-accent-light);
+}
+
+input[name="radio-control"] {
+    visibility: hidden;
+    width: 1px;
+    height: 0;
+    clip: rect(0 0 0 0);
+    visibility: hidden;
+}
+
+.slider {
+    display: grid;
+    grid-template-columns: [full-start] repeat(12, 1fr) [full-end];
+    margin: 0 auto;
+    overflow: hidden;
+    width: max(min(70vw, 60rem), 31.6rem);
+    row-gap: 2rem;
+}
+
+.slider__header {
+    grid-column: full-start/full-end;
+    display: flex;
+    justify-content: center;
+}
+
+.slider__header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 2rem + 2vw, 4rem);
+    letter-spacing: 0.065em;
+}
+
+.slider__container {
+    display: flex;
+    grid-column: 1/13;
+    width: 400%;
+    align-items: center;
+}
+
+.descr__wrapper {
+    grid-column: 1/13;
+    overflow: hidden; 
+}
+
+.descr__container {
+    display: flex;
+    width: 400%;
+}
+
+.slide {
+    display: flex;
+    width: 25%;
+    transition: all 0.15s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 1vw;
+}
+
+.descr {
+    width: 25%;
+    font-size: clamp(1.2rem, 1.2rem + 0.4vw, 2rem);
+    letter-spacing: 0.025em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.15s ease-in-out;
+}
+
+.controls {
+    grid-column: 1/13;
+    grid-row: 4/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls label {
+    font-size: 0;
+    padding: clamp(0.6rem, 0.6rem + 0.2vw, 1.2rem);
+    cursor: pointer;
+}
+
+.controls label div {
+    width: clamp(1.4rem, 1.2rem + 1vw, 2.4rem);
+    height: clamp(1.4rem, 1.2rem + 1vw, 2.4rem);
+    background-color: var(--color-accent);
+    border: 0.2rem solid var(--color-accent);
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+}
+
+.controls label:hover div {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.controls label:active div {
+    transform: scale(0.85);
+}
+
+#radio-1:checked ~ .slider__container .slide-1,
+#radio-1:checked ~ .descr__wrapper .descr-1 { margin-left: 0; }
+#radio-1:checked ~ .descr__wrapper .descr-1 { opacity: 1; }
+#radio-1:checked ~ .controls label[for="radio-1"] div { background: transparent; }
+
+#radio-2:checked ~ .slider__container .slide-1,
+#radio-2:checked ~ .descr__wrapper .descr-1 { margin-left: -25%; }
+#radio-2:checked ~ .descr__wrapper .descr-2 { opacity: 1; }
+#radio-2:checked ~ .controls label[for="radio-2"] div { background: transparent; }
+
+#radio-3:checked ~ .slider__container .slide-1,
+#radio-3:checked ~ .descr__wrapper .descr-1 { margin-left: -50%; }
+#radio-3:checked ~ .descr__wrapper .descr-3 { opacity: 1; }
+#radio-3:checked ~ .controls label[for="radio-3"] div { background: transparent; }
+
+#radio-4:checked ~ .slider__container .slide-1,
+#radio-4:checked ~ .descr__wrapper .descr-1 { margin-left: -75%; }
+#radio-4:checked ~ .descr__wrapper .descr-4 { opacity: 1; }
+#radio-4:checked ~ .controls label[for="radio-4"] div { background: transparent; }
+
+@media only screen and (min-width: 48em) {
+    .slider { row-gap: 3rem; }
+    .controls {
+        grid-column: 8/13;
+        justify-content: flex-end;
+    }
+    .descr__wrapper { 
+        grid-column: 1/8;
+        grid-row: 4/5;
+    }
+    .descr { padding-inline-start: 1rem; }
+    .controls label div { border-width: 0.3rem; }
+}
